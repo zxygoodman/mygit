@@ -48,7 +48,8 @@ public class HomeActivity extends Activity {
                 startActivity(intent);
             }
         });
-       DBManager dbManager= DBManager.getInstance(this);
+        // 判断数据库中是否存在数据
+        DBManager dbManager = DBManager.getInstance(this);
         if (dbManager.haveDataOrNot()) {
             arrayList = dbManager.selectData();
             newsAdapter.setDataList(arrayList);
@@ -63,10 +64,8 @@ public class HomeActivity extends Activity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-
                             newsAdapter.setDataList(arrayList);
                             newsAdapter.notifyDataSetChanged();
-
                         }
                     });
                 }
